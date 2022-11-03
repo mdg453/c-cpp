@@ -6,7 +6,7 @@
 // See full documentation in header file
 int test_encode_non_cyclic_lower_case_positive_k ()
 {
-  char in[] = "abc";
+  char in[] = "a-b08c";
   char out[] = "def";
   encode (in, K_1);
   return strcmp (in, out) != 0;
