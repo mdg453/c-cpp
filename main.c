@@ -77,8 +77,13 @@ int main (int argc, char *argv[])
         encode(in, argv[2]) ;
         fprintf(out,"%s", in) ;
     }
+    if(strcmp(argv[1] , "decode"))
+    {
+        decode(in, argv[2]) ;
+        fprintf(out,"%s", in) ;
+    }
 
     fclose(in) ;
     fclose(out) ;
-    return 0 ;
+    return EXIT_SUCCESS ;
 }
