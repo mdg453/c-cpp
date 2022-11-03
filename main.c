@@ -5,23 +5,24 @@
 #include <string.h>
 #define ARGV5 5
 #define ARGV1 1
+#define ARGV2 2
 
 int check_list (int argc, char *argv[])
 {
-    if(argc != 2 && argc != 5){
+    if(argc != ARGV2 && argc != ARGV5){
         printf("The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
     }
-    if (argc == 2 && !strcmp(argv[1], "test"))
+    if (argc == ARGV2 && !strcmp(argv[1], "test"))
     {
         printf("Usage: cipher test\n" ) ;
         return 0 ;
     }
-    //if ((strcmp(argv[1], "encode") != 0 ) && (strcmp(argv[1] , "decode") != 0))
-    //{
-    //printf("The given command is invalid.\n");
-    //    return EXIT_FAILURE ;
-    //}
+    if ((strcmp(argv[1], "encode") != 0 ) && (strcmp(argv[1] , "decode") != 0))
+    {
+    printf("The given command is invalid.\n");
+        return EXIT_FAILURE ;
+    }
     if(*argv[4]%1 != 0){
         printf("The given shift value is invalid.\n" ) ;
         return 0 ;
@@ -53,7 +54,7 @@ int main (int argc, char *argv[])
     {
         return EXIT_FAILURE ;
     }
-    if (argc == 2) {
+    if (argc == ARGV2) {
         if (tester()) {
             return EXIT_SUCCESS ;
         }
