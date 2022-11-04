@@ -70,7 +70,7 @@ int check_list (int argc, char *argv[])
     }
     if (argc == ARGV2) {
         printf("in") ;
-        if (strcmp(argv[2],"test") == 0)
+        if (strcmp(argv[1],"test") == 0)
         {
             fprintf(stderr,"Usage: cipher test\n" ) ;
             return 0 ;
