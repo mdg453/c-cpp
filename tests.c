@@ -6,7 +6,7 @@
 // See full documentation in header file
 int test_encode_non_cyclic_lower_case_positive_k ()
 {
-  char in[] = "a-b08c";
+  char in[] = "abc";
   char out[] = "def";
   encode (in, K_1);
   return strcmp (in, out) != 0;
@@ -15,8 +15,8 @@ int test_encode_non_cyclic_lower_case_positive_k ()
 // See full documentation in header file
 int test_encode_cyclic_lower_case_special_char_positive_k ()
 {
-  char in[] = "abcxyz" ;
-  char out[] = "defabc";
+  char in[] = "xyz" ;
+  char out[] = "abc";
   encode (in, K_1);
   return strcmp (in, out) != 0;
 }

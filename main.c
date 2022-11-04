@@ -12,20 +12,53 @@
 
 int tester()
 {
-    if(test_encode_non_cyclic_lower_case_positive_k() &&
-       test_encode_cyclic_lower_case_special_char_positive_k() &&
-       test_encode_non_cyclic_lower_case_special_char_negative_k() &&
-       test_encode_cyclic_lower_case_negative_k() &&
-       test_encode_cyclic_upper_case_positive_k() &&
-       test_decode_non_cyclic_lower_case_positive_k() &&
-       test_decode_cyclic_lower_case_special_char_positive_k() &&
-       test_decode_non_cyclic_lower_case_special_char_negative_k() &&
-       test_decode_cyclic_lower_case_negative_k() &&
-       test_decode_cyclic_upper_case_positive_k())
-    {
-        return 1 ;
+    int flag = 1 ;
+    if(!test_encode_non_cyclic_lower_case_positive_k()){
+        flag = 0 ;
     }
-    return 0 ;
+
+    if(!test_encode_cyclic_lower_case_special_char_positive_k()){
+        flag = 0 ;
+    }
+
+    if(!test_encode_non_cyclic_lower_case_special_char_negative_k()){
+        flag = 0 ;
+    }
+
+    if(!test_decode_non_cyclic_lower_case_positive_k()){
+        flag = 0 ;
+    }
+
+    if(!test_encode_cyclic_lower_case_negative_k()){
+        flag = 0 ;
+    }
+
+    if(!test_encode_cyclic_upper_case_positive_k()){
+        flag = 0 ;
+    }
+    if(!test_encode_non_cyclic_lower_case_positive_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_non_cyclic_lower_case_positive_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_cyclic_lower_case_special_char_positive_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_non_cyclic_lower_case_special_char_negative_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_non_cyclic_lower_case_special_char_negative_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_cyclic_lower_case_negative_k()){
+        flag = 0 ;
+    }
+    if(!test_decode_cyclic_upper_case_positive_k()){
+        flag = 0 ;
+    }
+
+    return flag ;
 }
 
 int check_list (int argc, char *argv[])
@@ -68,7 +101,6 @@ int main (int argc, char *argv[])
         return EXIT_FAILURE ;
     }
     long int argv2 = strtol(argv[2], NULL, 10);
-
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
     FILE* in = fopen (input_path, "r") ;
@@ -80,11 +112,6 @@ int main (int argc, char *argv[])
     char s_in[MAX_CHAR] = {0} ;
     fgets(s_in,MAX_CHAR,in) ;
     FILE *outf = fopen(output_path, "w") ;
-    //if (outf == NULL)
-    //{
-    //    fprintf(stderr,"\nThe given file is invalid.\n" ) ;
-    //    return EXIT_FAILURE ;
-    //}
     if(strcmp(argv[1] , "encode") != 0)
     {
         encode(s_in, argv2) ;
@@ -100,3 +127,10 @@ int main (int argc, char *argv[])
     fclose(outf) ;
     return EXIT_SUCCESS ;
 }
+/*
+int main (int argc, char *argv[]) {
+    if (tester()) {
+        return EXIT_SUCCESS;
+    }
+    return EXIT_FAILURE ;
+}*/

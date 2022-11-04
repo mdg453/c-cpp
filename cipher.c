@@ -41,7 +41,7 @@ void encode (char s[], int k)
     s[i] = b ;
     i++ ;
     }
-    printf("%s", s) ;
+    printf("%s\n", s) ;
 
 }
 
@@ -73,5 +73,5 @@ void decode (char s[], int k)
         s[i] = b ;
         i++ ;
     }
-    printf("%s", s) ;
+    printf("%s\n", s) ;
 }
