@@ -6,6 +6,7 @@
 #define ARGV5 5
 #define ARGV1 1
 #define ARGV2 2
+#define MAX_CHAR 1025
 
 int check_list (int argc, char *argv[])
 {
@@ -61,30 +62,32 @@ int main (int argc, char *argv[])
     }
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
-    FILE *in = fopen (input_path, "r") ;
+    FILE* in = fopen (input_path, "r") ;
     if (in == NULL)
     {
         fprintf(stderr,"\nThe given file is invalid.\n" ) ;
         return EXIT_FAILURE ;
     }
-    FILE *out = fopen(output_path, "w") ;
-    if (out == NULL)
+    char s_in[MAX_CHAR] = {0} ;
+    fgets(s_in,MAX_CHAR,in) ;
+    FILE *outf = fopen(output_path, "w") ;
+    if (outf == NULL)
     {
         fprintf(stderr,"\nThe given file is invalid.\n" ) ;
         return EXIT_FAILURE ;
     }
     if(strcmp(argv[1] , "encode"))
     {
-        encode(in, argv[2]) ;
-        fprintf(out,"%s", in) ;
+        encode(s_in, argv[2]) ;
+        fputs(s_in, outf) ;
     }
     if(strcmp(argv[1] , "decode"))
     {
-        decode(in, argv[2]) ;
-        fprintf(out,"%s", in) ;
+        decode(s_in, argv[2]) ;
+        fputs(s_in, outf) ;
     }
 
     fclose(in) ;
-    fclose(out) ;
+    fclose(outf) ;
     return EXIT_SUCCESS ;
 }
