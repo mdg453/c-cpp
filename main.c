@@ -9,17 +9,46 @@
 #define MAX_CHAR 1025
 #define ARGV1_LEN 7
 
+
+int tester()
+{
+    if(test_encode_non_cyclic_lower_case_positive_k() &&
+       test_encode_cyclic_lower_case_special_char_positive_k() &&
+       test_encode_non_cyclic_lower_case_special_char_negative_k() &&
+       test_encode_cyclic_lower_case_negative_k() &&
+       test_encode_cyclic_upper_case_positive_k() &&
+       test_decode_non_cyclic_lower_case_positive_k() &&
+       test_decode_cyclic_lower_case_special_char_positive_k() &&
+       test_decode_non_cyclic_lower_case_special_char_negative_k() &&
+       test_decode_cyclic_lower_case_negative_k() &&
+       test_decode_cyclic_upper_case_positive_k())
+    {
+        return 1 ;
+    }
+    return 0 ;
+}
+
 int check_list (int argc, char *argv[])
 {
-    char argv1[ARGV1_LEN] = {0} ;
-    int argv2 = 0 ;
-    sscanf(argv[1],"%s", argv1) ;
-    sscanf(argv[2],"%d", &argv2) ;
+    printf("inin") ;
+    long int argv2 = strtol(argv[2], NULL, 10) ;
     if(argc != ARGV2 && argc != ARGV5){
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
     }
-    if ((strcmp(argv1, "encode") != 0 ) && (strcmp(argv1 , "decode") != 0))
+    if (argc == ARGV2) {
+        printf("in") ;
+        if (strcmp(argv[2],"test") == 0)
+        {
+            fprintf(stderr,"Usage: cipher test\n" ) ;
+            return 0 ;
+        }
+        if (tester() == 0) {
+            return 0 ;
+        }
+
+    }
+    if ((strcmp(argv[1], "encode") != 0 ) && (strcmp(argv[1] , "decode") != 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
@@ -31,45 +60,17 @@ int check_list (int argc, char *argv[])
     return 1 ;
 }
 
-int tester()
-{
-    if(test_encode_non_cyclic_lower_case_positive_k() &&
-       test_encode_cyclic_lower_case_special_char_positive_k() &&
-        test_encode_non_cyclic_lower_case_special_char_negative_k() &&
-            test_encode_cyclic_lower_case_negative_k() &&
-                test_encode_cyclic_upper_case_positive_k() &&
-                    test_decode_non_cyclic_lower_case_positive_k() &&
-        test_decode_cyclic_lower_case_special_char_positive_k() &&
-            test_decode_non_cyclic_lower_case_special_char_negative_k() &&
-                test_decode_cyclic_lower_case_negative_k() &&
-                    test_decode_cyclic_upper_case_positive_k())
-    {
-        return 1 ;
-    }
-    return 0 ;
-}
 
 int main (int argc, char *argv[])
 {
-
-    if(!(check_list(argc, argv)))
+    printf("in") ;
+    int check = check_list(argc, argv) ;
+    if(check != 0)
     {
         return EXIT_FAILURE ;
     }
-    if (argc == ARGV2) {
-        if (strcmp(argv[2],"test") == 0)
-        {
-            fprintf(stderr,"Usage: cipher test\n" ) ;
-            return EXIT_FAILURE ;
-        }
-        if (tester()) {
-            return EXIT_SUCCESS ;
-        }
-    }
-    char argv1[ARGV1_LEN] = {0} ;
-    int argv2 = 0 ;
-    sscanf(argv[1],"%s", argv1) ;
-    sscanf(argv[2],"%d", &argv2) ;
+    long int argv2 = strtol(argv[2], NULL, 10);
+
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
     FILE* in = fopen (input_path, "r") ;
@@ -86,14 +87,14 @@ int main (int argc, char *argv[])
     //    fprintf(stderr,"\nThe given file is invalid.\n" ) ;
     //    return EXIT_FAILURE ;
     //}
-    if(strcmp(argv1 , "encode"))
+    if(strcmp(argv[1] , "encode") != 0)
     {
         encode(s_in, argv2) ;
         fputs(s_in, outf) ;
     }
-    if(strcmp(argv1 , "decode"))
+    if(strcmp(argv[1] , "decode") != 0)
     {
-        decode(s_in, 2) ;
+        decode(s_in, argv2) ;
         fputs(s_in, outf) ;
     }
 
