@@ -19,11 +19,6 @@ int check_list (int argc, char *argv[])
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
     }
-    if (argc == ARGV2 && !strcmp(argv1, "test"))
-    {
-        fprintf(stderr,"Usage: cipher test\n" ) ;
-        return 0 ;
-    }
     if ((strcmp(argv1, "encode") != 0 ) && (strcmp(argv1 , "decode") != 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
@@ -62,6 +57,11 @@ int main (int argc, char *argv[])
         return EXIT_FAILURE ;
     }
     if (argc == ARGV2) {
+        if (strcmp(argv[2],"test") == 0)
+        {
+            fprintf(stderr,"Usage: cipher test\n" ) ;
+            return EXIT_FAILURE ;
+        }
         if (tester()) {
             return EXIT_SUCCESS ;
         }
