@@ -10,21 +10,27 @@
 
 int check_list (int argc, char *argv[])
 {
+    char argv1[7] ;
+    int argv2 = 0 ;
+    scanf(argv[1],"%s", &argv1) ;
+    scanf(argv[2],"%s", &argv2) ;
+    char *input_path = argv[3] ;
+    char *output_path = argv[4] ;
     if(argc != ARGV2 && argc != ARGV5){
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
     }
-    if (argc == ARGV2 && !strcmp(argv[1], "test"))
+    if (argc == ARGV2 && !strcmp(argv1, "test"))
     {
         fprintf(stderr,"Usage: cipher test\n" ) ;
         return 0 ;
     }
-    if ((strcmp(argv[1], "encode") != 0 ) && (strcmp(argv[1] , "decode") != 0))
+    if ((strcmp(argv1, "encode") != 0 ) && (strcmp(argv1 , "decode") != 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
-        return EXIT_FAILURE ;
+        return 0 ;
     }
-    if(*argv[4]%1 != 0){
+    if(argv2%1 != 0){
         fprintf(stderr,"The given shift value is invalid.\n" ) ;
         return 0 ;
     }
@@ -60,6 +66,10 @@ int main (int argc, char *argv[])
             return EXIT_SUCCESS ;
         }
     }
+    char argv1[7] ;
+    int argv2 = 0 ;
+    scanf(argv[1],"%s", &argv1) ;
+    scanf(argv[2],"%s", &argv2) ;
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
     FILE* in = fopen (input_path, "r") ;
@@ -71,19 +81,19 @@ int main (int argc, char *argv[])
     char s_in[MAX_CHAR] = {0} ;
     fgets(s_in,MAX_CHAR,in) ;
     FILE *outf = fopen(output_path, "w") ;
-    if (outf == NULL)
+    //if (outf == NULL)
+    //{
+    //    fprintf(stderr,"\nThe given file is invalid.\n" ) ;
+    //    return EXIT_FAILURE ;
+    //}
+    if(strcmp(argv1 , "encode"))
     {
-        fprintf(stderr,"\nThe given file is invalid.\n" ) ;
-        return EXIT_FAILURE ;
-    }
-    if(strcmp(argv[1] , "encode"))
-    {
-        encode(s_in, argv[2]) ;
+        encode(s_in, argv2) ;
         fputs(s_in, outf) ;
     }
-    if(strcmp(argv[1] , "decode"))
+    if(strcmp(argv1 , "decode"))
     {
-        decode(s_in, argv[2]) ;
+        decode(s_in, 2) ;
         fputs(s_in, outf) ;
     }
 
