@@ -15,8 +15,6 @@ int check_list (int argc, char *argv[])
     int argv2 = 0 ;
     sscanf(argv[1],"%s", argv1) ;
     sscanf(argv[2],"%d", &argv2) ;
-    char *input_path = argv[3] ;
-    char *output_path = argv[4] ;
     if(argc != ARGV2 && argc != ARGV5){
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
@@ -58,6 +56,7 @@ int tester()
 
 int main (int argc, char *argv[])
 {
+
     if(!(check_list(argc, argv)))
     {
         return EXIT_FAILURE ;
@@ -76,7 +75,7 @@ int main (int argc, char *argv[])
     FILE* in = fopen (input_path, "r") ;
     if (in == NULL)
     {
-        fprintf(stderr,"\nThe given file is invalid.\n" ) ;
+        fprintf(stderr,"The given file is invalid.\n" ) ;
         return EXIT_FAILURE ;
     }
     char s_in[MAX_CHAR] = {0} ;
