@@ -16,23 +16,18 @@ int tester()
     if(!test_encode_non_cyclic_lower_case_positive_k()){
         flag = 0 ;
     }
-
     if(!test_encode_cyclic_lower_case_special_char_positive_k()){
         flag = 0 ;
     }
-
     if(!test_encode_non_cyclic_lower_case_special_char_negative_k()){
         flag = 0 ;
     }
-
     if(!test_decode_non_cyclic_lower_case_positive_k()){
         flag = 0 ;
     }
-
     if(!test_encode_cyclic_lower_case_negative_k()){
         flag = 0 ;
     }
-
     if(!test_encode_cyclic_upper_case_positive_k()){
         flag = 0 ;
     }
@@ -57,7 +52,6 @@ int tester()
     if(!test_decode_cyclic_upper_case_positive_k()){
         flag = 0 ;
     }
-
     return flag ;
 }
 
@@ -80,7 +74,7 @@ int check_list (int argc, char *argv[])
         }
 
     }
-    if ((strcmp(argv[1], "encode") != 0 ) && (strcmp(argv[1] , "decode") != 0))
+    if ((strcmp(argv[1], "encode") == 0 ) && (strcmp(argv[1] , "decode") == 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
@@ -96,7 +90,7 @@ int check_list (int argc, char *argv[])
 int main (int argc, char *argv[])
 {
     int check = check_list(argc, argv) ;
-    if(check != 0)
+    if(check == 0)
     {
         return EXIT_FAILURE ;
     }
@@ -127,10 +121,3 @@ int main (int argc, char *argv[])
     fclose(outf) ;
     return EXIT_SUCCESS ;
 }
-/*
-int main (int argc, char *argv[]) {
-    if (tester()) {
-        return EXIT_SUCCESS;
-    }
-    return EXIT_FAILURE ;
-}*/
