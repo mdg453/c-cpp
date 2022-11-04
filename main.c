@@ -7,13 +7,14 @@
 #define ARGV1 1
 #define ARGV2 2
 #define MAX_CHAR 1025
+#define ARGV1_LEN 7
 
 int check_list (int argc, char *argv[])
 {
-    char argv1[7] ;
+    char argv1[ARGV1_LEN] ;
     int argv2 = 0 ;
-    scanf(argv[1],"%s", &argv1) ;
-    scanf(argv[2],"%s", &argv2) ;
+    sscanf(argv[1],"%s", &argv1) ;
+    sscanf(argv[2],"%s", &argv2) ;
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
     if(argc != ARGV2 && argc != ARGV5){
@@ -66,10 +67,10 @@ int main (int argc, char *argv[])
             return EXIT_SUCCESS ;
         }
     }
-    char argv1[7] ;
+    char argv1[ARGV1_LEN] ;
     int argv2 = 0 ;
-    scanf(argv[1],"%s", &argv1) ;
-    scanf(argv[2],"%s", &argv2) ;
+    sscanf(argv[1],"%s", &argv1) ;
+    sscanf(argv[2],"%s", &argv2) ;
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
     FILE* in = fopen (input_path, "r") ;
