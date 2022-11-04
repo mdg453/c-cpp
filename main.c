@@ -30,7 +30,6 @@ int tester()
 
 int check_list (int argc, char *argv[])
 {
-    printf("inin") ;
     long int argv2 = strtol(argv[2], NULL, 10) ;
     if(argc != ARGV2 && argc != ARGV5){
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
@@ -63,7 +62,6 @@ int check_list (int argc, char *argv[])
 
 int main (int argc, char *argv[])
 {
-    printf("in") ;
     int check = check_list(argc, argv) ;
     if(check != 0)
     {
