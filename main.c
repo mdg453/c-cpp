@@ -57,14 +57,13 @@ int tester()
 
 int check_list (int argc, char *argv[])
 {
-    long int argv2 = strtol(argv[2], NULL, 10) ;
+
     if(argc != ARGV2 && argc != ARGV5){
         fprintf(stderr,"The program receives 1 or 4 arguments only.\n" ) ;
         return 0 ;
     }
     if (argc == ARGV2) {
-        printf("in") ;
-        if (strcmp(argv[1],"test") == 0)
+        if (strcmp(argv[1],"test") != 0)
         {
             fprintf(stderr,"Usage: cipher test\n" ) ;
             return 0 ;
@@ -74,6 +73,7 @@ int check_list (int argc, char *argv[])
         }
 
     }
+    long int argv2 = strtol(argv[2], NULL, 10) ;
     if ((strcmp(argv[1], "encode") == 0 ) && (strcmp(argv[1] , "decode") == 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
@@ -97,7 +97,7 @@ int main (int argc, char *argv[])
     long int argv2 = strtol(argv[2], NULL, 10);
     char *input_path = argv[3] ;
     char *output_path = argv[4] ;
-    FILE* in = fopen (input_path, "r") ;
+    FILE* in = fopen ( input_path, "r") ;
     if (in == NULL)
     {
         fprintf(stderr,"The given file is invalid.\n" ) ;
@@ -106,18 +106,23 @@ int main (int argc, char *argv[])
     char s_in[MAX_CHAR] = {0} ;
     fgets(s_in,MAX_CHAR,in) ;
     FILE *outf = fopen(output_path, "w") ;
+    if (outf == NULL)
+    {
+        fprintf(stderr,"The given file is invalid.\n" ) ;
+        return EXIT_FAILURE ;
+    }
     if(strcmp(argv[1] , "encode") != 0)
     {
         encode(s_in, argv2) ;
-        fputs(s_in, outf) ;
     }
     if(strcmp(argv[1] , "decode") != 0)
     {
         decode(s_in, argv2) ;
-        fputs(s_in, outf) ;
     }
-
+    fputs(s_in, outf) ;
     fclose(in) ;
     fclose(outf) ;
     return EXIT_SUCCESS ;
+
+
 }
