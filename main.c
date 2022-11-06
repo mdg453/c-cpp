@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #define ARGV5 5
 #define ARGV1 1
 #define ARGV2 2
@@ -73,13 +74,14 @@ int check_list (int argc, char *argv[])
         }
 
     }
+
     long int argv2 = strtol(argv[2], NULL, 10) ;
     if ((strcmp(argv[1], "encode") == 0 ) && (strcmp(argv[1] , "decode") == 0))
     {
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
     }
-    if(argv2%1 != 0){
+    if(argv2%1 != 0 || isdigit(*argv[2])){
         fprintf(stderr,"The given shift value is invalid.\n" ) ;
         return 0 ;
     }
