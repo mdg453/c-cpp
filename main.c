@@ -73,7 +73,7 @@ int check_list (int argc, char *argv[])
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
     }
-    for (int i =0 ; i<strlen(argv[2]) ; i++ )
+    for (long unsigned int i =0 ; i<strlen(argv[2]) ; i++ )
     {
         if(!isdigit(argv[2][i]) && argv[2][0] != '-')
         {
