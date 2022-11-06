@@ -74,9 +74,7 @@ int check_list (int argc, char *argv[])
         }
 
     }
-
-    long int argv2 = strtol(argv[2], NULL, 10) ;
-    if ((strcmp(argv[1], "encode") == 0 ) && (strcmp(argv[1] , "decode") == 0))
+    if (!strcmp(argv[1], "encode")  && !(strcmp(argv[1] , "decode")))
     {
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
@@ -89,6 +87,7 @@ int check_list (int argc, char *argv[])
             return 0 ;
         }
     }
+    long int argv2 = strtol(argv[2], NULL, 10) ;
     if(argv2%1 != 0){
         fprintf(stderr,"The given shift value is invalid.\n" ) ;
         return 0 ;
