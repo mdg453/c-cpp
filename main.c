@@ -106,11 +106,6 @@ int main (int argc, char *argv[])
     char s_in[MAX_CHAR] = {0} ;
     fgets(s_in,MAX_CHAR,in) ;
     FILE *outf = fopen(output_path, "w") ;
-    if (outf == NULL)
-    {
-        fprintf(stderr,"The given file is invalid.\n" ) ;
-        return EXIT_FAILURE ;
-    }
     if(strcmp(argv[1] , "encode") != 0)
     {
         encode(s_in, argv2) ;
