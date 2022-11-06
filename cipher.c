@@ -6,7 +6,7 @@
 #define LOOS_BUTTOM_LOWER 122
 #define TOP_LOWER 96
 #define LOOS_TOP_LOWER 97
-#define BOTTOM_UPPER 63
+#define BOTTOM_UPPER 64
 #define LOOS_BOTTOM_UPPER 64
 #define TOP_UPPER 91
 #define LOOS_TOP_UPPER 90
@@ -61,10 +61,10 @@ void decode (char s[], int k)
         }
         else if (a < TOP_UPPER && a > BOTTOM_UPPER) {
             a = a - k;
-            while (a > LOOS_TOP_UPPER) {
+            while (a >= TOP_UPPER) {
                 a = a - ALPHNUM;
             }
-            while (a < LOOS_BOTTOM_UPPER) {
+            while (a <= BOTTOM_UPPER) {
                 a = a + ALPHNUM;
             }
         }
