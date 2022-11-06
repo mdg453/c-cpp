@@ -37,7 +37,6 @@ void encode (char s[], int k)
     s[i] = b ;
     i++ ;
     }
-
 }
 
 // See full documentation in header file

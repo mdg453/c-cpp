@@ -26,7 +26,7 @@ int test_encode_non_cyclic_lower_case_special_char_negative_k ()
 {
     char in[] = "xyz" ;
     char out[] = "uvw";
-    encode (in, -3);
+    encode (in, -K_1);
     return strcmp (in, out) != 0;
 }
 
@@ -35,7 +35,7 @@ int test_encode_cyclic_lower_case_negative_k ()
 {
     char in[] = "abc" ;
     char out[] = "xyz";
-    encode (in, -3);
+    encode (in, -K_1);
     return strcmp (in, out) != 0;
 }
 

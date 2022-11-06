@@ -14,43 +14,34 @@
 int tester()
 {
     int flag = 1 ;
-    if(!test_encode_non_cyclic_lower_case_positive_k()){
+    if(test_encode_non_cyclic_lower_case_positive_k()){
         flag = 0 ;
     }
-    if(!test_encode_cyclic_lower_case_special_char_positive_k()){
+    if(test_encode_cyclic_lower_case_special_char_positive_k()){
         flag = 0 ;
     }
-    if(!test_encode_non_cyclic_lower_case_special_char_negative_k()){
+    if(test_encode_non_cyclic_lower_case_special_char_negative_k()){
         flag = 0 ;
     }
-    if(!test_decode_non_cyclic_lower_case_positive_k()){
+    if(test_encode_cyclic_lower_case_negative_k()){
         flag = 0 ;
     }
-    if(!test_encode_cyclic_lower_case_negative_k()){
+    if(test_encode_cyclic_upper_case_positive_k()){
         flag = 0 ;
     }
-    if(!test_encode_cyclic_upper_case_positive_k()){
+    if(test_decode_non_cyclic_lower_case_positive_k()){
         flag = 0 ;
     }
-    if(!test_encode_non_cyclic_lower_case_positive_k()){
+    if(test_decode_cyclic_lower_case_special_char_positive_k()){
         flag = 0 ;
     }
-    if(!test_decode_non_cyclic_lower_case_positive_k()){
+    if(test_decode_non_cyclic_lower_case_special_char_negative_k()){
         flag = 0 ;
     }
-    if(!test_decode_cyclic_lower_case_special_char_positive_k()){
+    if(test_decode_cyclic_lower_case_negative_k()){
         flag = 0 ;
     }
-    if(!test_decode_non_cyclic_lower_case_special_char_negative_k()){
-        flag = 0 ;
-    }
-    if(!test_decode_non_cyclic_lower_case_special_char_negative_k()){
-        flag = 0 ;
-    }
-    if(!test_decode_cyclic_lower_case_negative_k()){
-        flag = 0 ;
-    }
-    if(!test_decode_cyclic_upper_case_positive_k()){
+    if(test_decode_cyclic_upper_case_positive_k()){
         flag = 0 ;
     }
     return flag ;
@@ -69,12 +60,13 @@ int check_list (int argc, char *argv[])
             fprintf(stderr,"Usage: cipher test\n" ) ;
             return 0 ;
         }
-        if (tester() == 0) {
+        int t = tester() ;
+        if (!t) {
             return 0 ;
         }
         else
         {
-            return 1 ;
+            return 2 ;
         }
 
     }
@@ -106,6 +98,10 @@ int main (int argc, char *argv[])
     if(check == 0)
     {
         return EXIT_FAILURE ;
+    }
+    if(check == 2)
+    {
+        return EXIT_SUCCESS ;
     }
     long int argv2 = strtol(argv[2], NULL, 10);
     char *input_path = argv[3] ;
