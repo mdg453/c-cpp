@@ -3,13 +3,9 @@
 #include <stdio.h>
 #define ALPHNUM 26
 #define BUTTOM_LOWER 123
-#define LOOS_BUTTOM_LOWER 122
 #define TOP_LOWER 96
-#define LOOS_TOP_LOWER 97
 #define BOTTOM_UPPER 64
-#define LOOS_BOTTOM_UPPER 64
 #define TOP_UPPER 91
-#define LOOS_TOP_UPPER 90
 
 /// IN THIS FILE, IMPLEMENT EVERY FUNCTION THAT'S DECLARED IN cipher.h.
 
@@ -21,19 +17,19 @@ void encode (char s[], int k)
         int a = s[i];
         if (a < BUTTOM_LOWER && a > TOP_LOWER){
             a = a + k ;
-            while (a > LOOS_BUTTOM_LOWER){
+            while (a >= BUTTOM_LOWER){
                 a = a -ALPHNUM ;
             }
-            while (a < LOOS_TOP_LOWER) {
+            while (a <= TOP_LOWER) {
                 a = a + ALPHNUM;
             }
         }
         else if (a < TOP_UPPER && a > BOTTOM_UPPER) {
             a = a + k;
-            while (a > LOOS_TOP_UPPER) {
+            while (a >= TOP_UPPER) {
                 a = a - ALPHNUM;
             }
-            while (a < LOOS_BOTTOM_UPPER) {
+            while (a <= BOTTOM_UPPER) {
                 a = a + ALPHNUM;
             }
         }
@@ -52,10 +48,10 @@ void decode (char s[], int k)
         int a = s[i];
         if (a < BUTTOM_LOWER && a > TOP_LOWER){
             a = a - k ;
-            while (a > LOOS_BUTTOM_LOWER){
+            while (a >= BUTTOM_LOWER){
                 a = a -ALPHNUM ;
             }
-            while (a < LOOS_TOP_LOWER) {
+            while (a <= TOP_LOWER) {
                 a = a + ALPHNUM;
             }
         }
