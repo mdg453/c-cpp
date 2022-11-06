@@ -5,10 +5,8 @@
 #include <string.h>
 #include <ctype.h>
 #define ARGV5 5
-#define ARGV1 1
 #define ARGV2 2
 #define MAX_CHAR 1025
-#define ARGV1_LEN 7
 
 
 int tester()

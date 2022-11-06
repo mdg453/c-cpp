@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdio.h>
 #define ALPHNUM 26
-#define BUTTOM_LOWER 123
-#define TOP_LOWER 96
+#define BUTTOM_LOWER 96
+#define TOP_LOWER 123
 #define BOTTOM_UPPER 64
 #define TOP_UPPER 91
 
@@ -15,12 +15,12 @@ void encode (char s[], int k)
     int i = 0 ;
     while (s[i] != '\0'){
         int a = s[i];
-        if (a < BUTTOM_LOWER && a > TOP_LOWER){
+        if (a > BUTTOM_LOWER && a < TOP_LOWER){
             a = a + k ;
-            while (a >= BUTTOM_LOWER){
+            while (a >= TOP_LOWER){
                 a = a -ALPHNUM ;
             }
-            while (a <= TOP_LOWER) {
+            while (a <= BUTTOM_LOWER) {
                 a = a + ALPHNUM;
             }
         }
@@ -45,12 +45,12 @@ void decode (char s[], int k)
     int i = 0 ;
     while (s[i] != '\0'){
         int a = s[i];
-        if (a < BUTTOM_LOWER && a > TOP_LOWER){
+        if (a > BUTTOM_LOWER && a < TOP_LOWER){
             a = a - k ;
-            while (a >= BUTTOM_LOWER){
+            while (a >= TOP_LOWER){
                 a = a -ALPHNUM ;
             }
-            while (a <= TOP_LOWER) {
+            while (a <= BUTTOM_LOWER) {
                 a = a + ALPHNUM;
             }
         }
