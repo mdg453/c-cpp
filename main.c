@@ -70,6 +70,10 @@ int check_list (int argc, char *argv[])
             return 0 ;
         }
         if (tester() == 0) {
+            return 0 ;
+        }
+        else
+        {
             return 1 ;
         }
 
