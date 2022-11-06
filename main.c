@@ -118,11 +118,11 @@ int main (int argc, char *argv[])
         fprintf(stderr,"The given file is invalid.\n" ) ;
         return EXIT_FAILURE ;
     }
-    if(strcmp(argv[1] , "encode") != 0)
+    if(strcmp(argv[1] , "encode") == 0)
     {
         encode(s_in, argv2) ;
     }
-    if(strcmp(argv[1] , "decode") != 0)
+    if(strcmp(argv[1] , "decode") == 0)
     {
         decode(s_in, argv2) ;
     }
