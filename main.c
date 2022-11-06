@@ -74,7 +74,7 @@ int check_list (int argc, char *argv[])
         }
 
     }
-    if (!strcmp(argv[1], "encode")  && !(strcmp(argv[1] , "decode")))
+    if ((strcmp(argv[1], "encode"))  && (strcmp(argv[1] , "decode")))
     {
         fprintf(stderr,"The given command is invalid.\n");
         return 0 ;
